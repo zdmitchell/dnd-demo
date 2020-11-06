@@ -12,11 +12,11 @@ const Container = styled.div`
    justify-content: space-evenly;
 `;
 
-const DraggableItemContainer = ({ items }) => {
+const DraggableItemContainer = ({ items, top }) => {
    return (
       <Container>
          {items.map((item) => (
-            <DraggableItem boxId={item} />
+            <DraggableItem boxId={item} top={top} />
          ))}
       </Container>
    );

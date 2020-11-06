@@ -11,9 +11,9 @@ const Box = styled.div`
    opacity: ${({ isDragging }) => (isDragging ? 0.5 : 1)};
 `;
 
-const DraggableItem = ({ boxId }) => {
+const DraggableItem = ({ boxId, top }) => {
    const [{ isDragging }, drag] = useDrag({
-      item: { type: ItemTypes.BOX },
+      item: { type: ItemTypes.BOX, fromTop: top },
       collect: (monitor) => ({
          isDragging: !!monitor.isDragging(),
       }),

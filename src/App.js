@@ -31,8 +31,8 @@ function App() {
    return (
       <AppContainer>
          <DndProvider backend={HTML5Backend}>
-            <DraggableItemContainer items={items1} />
-            <DraggableItemContainer items={items2} />
+            <DraggableItemContainer items={items1} top={true} />
+            <DraggableItemContainer items={items2} top={false} />
          </DndProvider>
       </AppContainer>
    );
