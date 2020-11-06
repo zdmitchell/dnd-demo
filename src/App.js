@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import DraggableItem from './DraggableItem';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import DraggableItemContainer from './DraggableItemContainer';
+import { useState } from 'react';
+import { useCallback } from 'react';
 
 const AppContainer = styled.div`
    position: fixed;
@@ -10,24 +13,26 @@ const AppContainer = styled.div`
    transform: translate(-50%);
 `;
 
-const DraggableItemContainer = styled.div`
-   height: 50px;
-   width: 80vw;
-   background-color: red;
-   margin-bottom: 10px;
-   padding: 5px;
-   display: flex;
-   justify-content: space-evenly;
-`;
-
 function App() {
+   const [items1, setItems1] = useState([...Array(10).keys()]);
+   const [items2, setItems2] = useState([]);
+
+   const moveItem = useCallback(
+      (item) => {
+         if (items1.includes(item)) {
+            items2.push(item);
+         } else {
+            items1.push(item);
+         }
+      },
+      [items1, items2]
+   );
+
    return (
       <AppContainer>
          <DndProvider backend={HTML5Backend}>
-            <DraggableItemContainer>
-               <DraggableItem boxId={1} />
-            </DraggableItemContainer>
-            <DraggableItemContainer></DraggableItemContainer>
+            <DraggableItemContainer items={items1} />
+            <DraggableItemContainer items={items2} />
          </DndProvider>
       </AppContainer>
    );
