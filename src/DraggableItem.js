@@ -13,7 +13,7 @@ const Box = styled.div`
 
 const DraggableItem = ({ boxId, top }) => {
    const [{ isDragging }, drag] = useDrag({
-      item: { type: ItemTypes.BOX, fromTop: top },
+      item: { type: ItemTypes.BOX, fromTop: top, boxId },
       collect: (monitor) => ({
          isDragging: !!monitor.isDragging(),
       }),
