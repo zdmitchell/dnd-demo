@@ -14,25 +14,27 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-   const [items1, setItems1] = useState([...Array(10).keys()]);
-   const [items2, setItems2] = useState([]);
+   const [items1, setItems1] = useState(new Set([...Array(10).keys()]));
+   const [items2, setItems2] = useState(new Set());
 
-   const moveItem = useCallback(
-      (item) => {
-         if (items1.includes(item)) {
-            items2.push(item);
-         } else {
-            items1.push(item);
-         }
-      },
-      [items1, items2]
-   );
+   const moveItem = (fromTop) => (item) => {
+      if (fromTop) {
+         items2.add(item.boxId);
+         items1.delete(item.boxId);
+      } else {
+         items1.add(item.boxId);
+         items2.delete(item.boxId);
+      }
+
+      setItems1(new Set(items1));
+      setItems2(new Set(items2));
+   };
 
    return (
       <AppContainer>
          <DndProvider backend={HTML5Backend}>
-            <DraggableItemContainer items={items1} top={true} />
-            <DraggableItemContainer items={items2} top={false} />
+            <DraggableItemContainer items={items1} moveItem={moveItem} top={true} />
+            <DraggableItemContainer items={items2} moveItem={moveItem} top={false} />
          </DndProvider>
       </AppContainer>
    );
