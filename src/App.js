@@ -17,7 +17,7 @@ function App() {
    const [items1, setItems1] = useState(new Set([...Array(10).keys()]));
    const [items2, setItems2] = useState(new Set());
 
-   const moveItem = (fromTop) => (item) => {
+   const moveItem = fromTop => item => {
       if (fromTop) {
          items2.add(item.boxId);
          items1.delete(item.boxId);
