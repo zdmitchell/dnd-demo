@@ -1,24 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import styled from 'styled-components';
+import DraggableItem from './DraggableItem';
+
+const AppContainer = styled.div`
+   position: fixed;
+   left: 50%;
+   transform: translate(-50%);
+`;
+
+const DraggableItemContainer = styled.div`
+   height: 50px;
+   width: 80vw;
+   background-color: red;
+   margin-bottom: 10px;
+   padding: 5px;
+   display: flex;
+   justify-content: space-evenly;
+`;
 
 function App() {
    return (
-      <div className="App">
-         <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-               Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-               className="App-link"
-               href="https://reactjs.org"
-               target="_blank"
-               rel="noopener noreferrer"
-            >
-               Learn React
-            </a>
-         </header>
-      </div>
+      <AppContainer>
+         <DraggableItemContainer>
+            <DraggableItem />
+         </DraggableItemContainer>
+         <DraggableItemContainer></DraggableItemContainer>
+      </AppContainer>
    );
 }
 
