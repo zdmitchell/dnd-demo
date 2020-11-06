@@ -15,7 +15,7 @@ const DraggableItem = ({ boxId, top }) => {
    const [{ isDragging }, drag] = useDrag({
       item: { type: ItemTypes.BOX, fromTop: top, boxId },
       collect: (monitor) => ({
-         isDragging: !!monitor.isDragging(),
+         isDragging: monitor.isDragging(),
       }),
    });
 

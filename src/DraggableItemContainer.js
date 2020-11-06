@@ -19,8 +19,8 @@ const DraggableItemContainer = ({ items, moveItem, top }) => {
       accept: ItemTypes.BOX,
       drop: (item) => moveItem(!top)(item),
       collect: (monitor) => ({
-         isOver: !!monitor.isOver(),
-         canDrop: !!monitor.canDrop(),
+         isOver: monitor.isOver(),
+         canDrop: monitor.canDrop(),
       }),
       canDrop: (item) => item.fromTop !== top,
    });
