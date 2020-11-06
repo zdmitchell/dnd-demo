@@ -1,6 +1,8 @@
 import './App.css';
 import styled from 'styled-components';
 import DraggableItem from './DraggableItem';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 const AppContainer = styled.div`
    position: fixed;
@@ -21,10 +23,12 @@ const DraggableItemContainer = styled.div`
 function App() {
    return (
       <AppContainer>
-         <DraggableItemContainer>
-            <DraggableItem />
-         </DraggableItemContainer>
-         <DraggableItemContainer></DraggableItemContainer>
+         <DndProvider backend={HTML5Backend}>
+            <DraggableItemContainer>
+               <DraggableItem />
+            </DraggableItemContainer>
+            <DraggableItemContainer></DraggableItemContainer>
+         </DndProvider>
       </AppContainer>
    );
 }
