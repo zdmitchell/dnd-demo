@@ -25,7 +25,7 @@ function App() {
       <AppContainer>
          <DndProvider backend={HTML5Backend}>
             <DraggableItemContainer>
-               <DraggableItem />
+               <DraggableItem boxId={1} />
             </DraggableItemContainer>
             <DraggableItemContainer></DraggableItemContainer>
          </DndProvider>
