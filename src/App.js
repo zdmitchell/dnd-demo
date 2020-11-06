@@ -1,11 +1,9 @@
 import './App.css';
 import styled from 'styled-components';
-import DraggableItem from './DraggableItem';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import DraggableItemContainer from './DraggableItemContainer';
 import { useState } from 'react';
-import { useCallback } from 'react';
 
 const AppContainer = styled.div`
    position: fixed;
